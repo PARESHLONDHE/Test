@@ -1,0 +1,65 @@
+﻿
+
+@{
+    ViewBag.Title = "AddCat";
+
+}
+
+<h2>Add Catagory</h2>
+<br />
+<br />
+
+@using (Html.BeginForm("AddCatpo", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Catagory Name</label>
+        <br />
+        <br />
+        <input type="text" class="form-control" name="cname" placeholder="Enter Catagory Name" required>
+
+    </div>
+
+    <br />
+    <br />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    <br />
+    <br />
+}
+<table class="table table-dark">
+    <thead>
+        <tr>
+
+            <th scope="col">Catagory id</th>
+            <th scope="col">Catagory name</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            List<crud1.Models.Catagory> pa = this.ViewBag.ab;
+
+            if (pa.Count > 0)
+            {
+                foreach (crud1.Models.Catagory ab in pa)
+                {
+                    <tr>
+
+                        <td>@ab.Catgory_Id</td>
+                        <td>@ab.CatgoryName</td>
+                        <td>
+
+
+                            <a href="@Url.Action("D", "Home", new { @id = ab.Catgory_Id })"
+                               class="btn btn-primary">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+            }
+        }
+
+    </tbody>
+</table>

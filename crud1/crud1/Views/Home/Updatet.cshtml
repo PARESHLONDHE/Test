@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Updatet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update</h2>
+
+<br />
+@using (Html.BeginForm("Updatea", "Home", FormMethod.Post))
+{
+    crud1.Models.Product p = this.ViewBag.ida;
+    <label>Product Name</label>
+    <br />
+    <br />
+    <input type="text" class="form-control" name="pname" placeholder=@p.ProductName required />
+    <br />
+    <br />
+    <input type="text" class="form-control" name="id" value=@p.ProductId placeholder=@p.ProductId readonly />
+    <br />
+    <br />
+
+    <select class="custom-select"
+            name="ha" required>
+        @{
+
+
+            List<crud1.Models.Catagory> pa = this.ViewBag.ab;
+            foreach (crud1.Models.Catagory ab in pa)
+            {
+
+                <option value="@ab.Catgory_Id"><bold>cat id= </bold>@ab.Catgory_Id <bold>and cat name= </bold> @ab.CatgoryName</option>
+
+
+
+            }
+
+
+        }
+    </select>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+}

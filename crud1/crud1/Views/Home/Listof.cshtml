@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Listof";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of cat and product</h2>
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Product Id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Catagory id</th>
+            <th scope="col">Catagory name</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            List<crud1.Models.Catagory> pa = this.ViewBag.ab;
+            List<crud1.Models.Product> ca = this.ViewBag.bc;
+
+            foreach (crud1.Models.Catagory ab in pa)
+            {
+                foreach (crud1.Models.Product ac in ca)
+                {
+                    if (ac.Catgory_Id == ab.Catgory_Id)
+                    {
+                        <tr>
+
+
+                            <td>@ac.ProductId.</td>
+                            <td>@ac.ProductName</td>
+                            <td>@ab.Catgory_Id</td>
+                            <td>@ab.CatgoryName</td>
+                            <td>
+                                <a href="@Url.Action("Updatet", "Home", new { @idc = ac.ProductId })"
+                                   class="btn btn-primary">Update</a>
+
+                                <a href="@Url.Action("Delete", "Home", new { @id = ac.ProductId })"
+                                   class="btn btn-primary">Delete</a>
+                            </td>
+                        </tr>
+
+                    }
+                }
+            }
+
+        }
+
+    </tbody>
+</table>
+
+
+@using (Html.BeginForm("Listof", "Home", FormMethod.Get))
+{
+    int c=this.ViewBag.bbb;
+
+
+    <select class="custom-select"
+            name="pagenumber" required>
+        <option value="none" selected disabled hidden>@c</option>
+        @{
+            double totalpages = ViewBag.totalpages;
+
+            for (int i = 1; i <= totalpages; i++)
+            {
+
+                <option value="@i"><bold>@i<bold></option>
+
+            }
+
+
+        }
+    </select>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-primary">Go to page</button>
+
+}

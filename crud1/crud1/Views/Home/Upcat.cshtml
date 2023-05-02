@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Upcat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update cat</h2>
+
+<br />
+@using (Html.BeginForm("Upcac", "Home", FormMethod.Post))
+{
+    crud1.Models.Catagory d = this.ViewBag.ida;
+    <label>Product Name</label>
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <label>Catagory Id</label>
+    <br />
+    <br />
+
+    <input type="text" class="form-control" name="id" value=@d.Catgory_Id placeholder=@d.Catgory_Id readonly />
+    <br />
+    <br />
+    <label>Catagory Name</label>
+    <br />
+    <br />
+    <input type="text" class="form-control" name="cat" placeholder=@d.CatgoryName required />
+
+
+
+    <br />
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+}

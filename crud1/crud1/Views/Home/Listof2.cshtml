@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Listof2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Catgory and products</h2>
+<h1>Please add catagory and elementes</h1>
+
+<ol>
+    <li>@Html.ActionLink("Add Catagory", "AddCat", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+
+    <li>@Html.ActionLink("Add Productt", "Addnpro", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+</ol>
